@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IOTSystem</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link href="/static/css/index.css" rel="stylesheet" type="text/css">
+    <script src="/static/js/index.js" rel="script"></script>
+    <script src="https://cdn.highcharts.com.cn/highcharts/highcharts.js"></script>
+    <script src="https://cdn.highcharts.com.cn/highcharts/modules/exporting.js"></script>
+    <script src="https://cdn.highcharts.com.cn/highcharts/modules/data.js"></script>
+    <script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+</head>
+<body>
+    <div class="main">
+        <div class="header">
+            <h1><a href="/index" style="color: black">Welcome to My IotSystem!</a></h1>
+            <a href="/register" class="header-right" id="btn-register">register</a>
+            <a href="/login" class="header-right" id="btn-login">login</a>
+            <a href="#" class="header-right" id="btn-logout">logout</a>
+        </div>
+
+        <div class="statistics-data">
+            <h2>Statistics Data</h2>
+            <details open>
+                <summary>basic information</summary>
+                <p><b>
+                    <span style="color:blue">Online Device Number:</span>
+                    <span id="online-device-number"></span>
+                </b></p>
+                <p><b>
+                    <span style="color:blue">Total Information Received:</span>
+                    <span id="total-info"></span>
+                </b></p>
+                <p><b>
+                    <span style="color:red">Alert Information Received:</span>
+                    <span id="alert-info"></span>
+                </b></p>
+                <p><b>
+                    <span style="color:red">Alert Information Percent:</span>
+                    <span id="alert-info-percent"></span>
+                </b></p>
+            </details>
+            <details>
+                <summary id="graphic-information">graphic information</summary>
+                <button id="device-info-refresh">refresh</button>
+                <div id="device-column-graph"></div>
+                <table id="device-table" style="display: none">
+                    <thead>
+                        <th></th>
+                        <th>alert</th>
+                        <th>total</th>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </details>
+            <hr>
+        </div>
+
+        <div class="device-setting">
+            <h2>Device Setting</h2>
+            <details>
+                <summary id="device-name-info">modify device name</summary>
+                <table id="device-table-name">
+                    <thead>
+                    <th style="width: 150px">clientId</th>
+                    <th style="width: 150px">name</th>
+                    <th style="width: 100px">operation</th>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </details>
+            <hr>
+        </div>
+
+        <div class="device-data">
+            <h2>Device Data</h2>
+            <details open>
+                <summary id="device-data-info">device data console</summary>
+                <span style="margin-left: 20px; color: blue;"><b>Input clientId and Maximum Data to search</b></span>
+                <input type="text" id="device-search-id" value="device0001">
+                <input type="number" step="1" min="0" max="20" id="device-search-cnt" value="10">
+                <button id="device-search-btn">search</button>
+                <table id="device-search-table">
+                    <thead>
+                    <th>clientId</th>
+                    <th>info</th>
+                    <th>value</th>
+                    <th>alert</th>
+                    <th>position</th>
+                    <th>timestamp</th>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </details>
+            <hr>
+        </div>
+
+        <div class="device-location">
+            <h2>Device Location</h2>
+            <details open>
+                <summary id="device-location-info">location map</summary>
+                <span style="margin-left: 20px; color: blue;"><b>Input clientId and Maximum Data to view in map</b></span>
+                <input type="text" id="device-location-id" value="device0001">
+                <input type="number" step="1" min="0" max="20" id="device-location-cnt" value="10">
+                <button id="device-location-btn">locate</button>
+                <div id="map" style="width: 100%; height: 400px;"></div>
+                <p style="margin-left: 0; color: orange;"><b>Orange marks: current position</b></p>
+                <p style="margin-left: 0; color: green;"><b>Green marks: normal</b></p>
+                <p style="margin-left: 0; color: red;"><b>Red marks: alert</b></p>
+            </details>
+        </div>
+    </div>
+</body>
+</html>
